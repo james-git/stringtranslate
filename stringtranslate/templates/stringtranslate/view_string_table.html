@@ -33,9 +33,9 @@
 				<tr>
 					<th>AppSet:</th>
 					<th>
-						<select>
+						<select name="appset_id">
 							{% for appsetrow in appset %}
-							<option name="appset_id" value="{{appsetrow.id}}">{{appsetrow.name}}</option>
+							<option value="{{appsetrow.id}}">{{appsetrow.name}}</option>
 							{% endfor %}
 						</select>
 					</th>
@@ -44,9 +44,9 @@
 				<tr>
 					<th>LangCode:</th>
 					<th>
-						<select>
+						<select name="langcode_id">
 							{% for langcoderow in langcode %}
-							<option name="langcode_id" value="{{langcoderow.id}}">{{langcoderow.code}}</option>
+							<option value="{{langcoderow.id}}">{{langcoderow.code}}</option>
 							{% endfor %}
 						</select>
 					</th>
