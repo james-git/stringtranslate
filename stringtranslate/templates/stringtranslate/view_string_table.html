@@ -2,6 +2,7 @@
 <html>
 	<body>
 		<form action="" method="post">
+		<!--
 			<table>
 				<tr>
 					<th>AppSet</th>
@@ -20,14 +21,39 @@
 					<th>LangCode</th>
 				</tr>
 				
-				{% for langcoderow in langcode%}
+				{% for langcoderow in langcode %}
 				<tr>
 					<td><input type="radio" name="langcode_id" value="{{langcoderow.id}}"></td>
 					<td>{{langcoderow.code}}</td>
 				</tr>
 				{% endfor %}
 			</table>
+		-->
+			<table>
+				<tr>
+					<th>AppSet:</th>
+					<th>
+						<select>
+							{% for appsetrow in appset %}
+							<option name="appset_id" value="{{appsetrow.id}}">{{appsetrow.name}}</option>
+							{% endfor %}
+						</select>
+					</th>
+				</tr>
+
+				<tr>
+					<th>LangCode:</th>
+					<th>
+						<select>
+							{% for langcoderow in langcode %}
+							<option name="langcode_id" value="{{langcoderow.id}}">{{langcoderow.code}}</option>
+							{% endfor %}
+						</select>
+					</th>
+				</tr>
+			</table>
 			
+			<br/>
 			<input type="submit" value="View String Table">
 		</form>
 	</body>
