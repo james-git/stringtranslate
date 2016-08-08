@@ -9,4 +9,18 @@ def post_list(request):
 	return render_to_response('stringtranslate/post_list.html', {})
 	
 def view_string_table(request):
-	return render_to_response('stringtranslate/view_string_table.html', {})
+	if 'appset_id' in request.POST:
+		appset_id = request.POST['appset_id']
+		langcode_id = request.POST['langcode_id']
+		
+		appset = AppSet.objects.get(id=appset_id)
+		langcode = LangCode.objects.get(id=langcode_id)
+		
+		stringtable = StringTable.objects.filter(app_set=appset, lang_code=langcode)
+		
+		return render_to_response('stringtranslate/view_string_table01.html', locals())
+	else:
+		appset = AppSet.objects.all()
+		langcode = LangCode.objects.all()
+	
+		return render_to_response('stringtranslate/view_string_table.html', locals())
