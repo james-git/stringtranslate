@@ -3,22 +3,32 @@
 	<body>
 		<table>
 			<tr>
-				<th>ID</th>
-				<th>AppSet</th>
-				<th>LangCode</th>
+				<th>AppSet:</th>
+				<th>{{appset.name}}</th>
+			</tr>
+			<tr>
+				<th>LangCode:</th>
+				<th>{{langcode.code}}</th>
+			</tr>
+		</table>
+		
+		<br/>
+		
+		<table>
+			<tr>
 				<th>Key</th>
 				<th>String</th>
 			</tr>
-			
+			<!--
 			{% for stringtablerow in stringtable %}
 			<tr>
-				<th>{{stringtablerow.id}}</th>
-				<th>{{stringtablerow.app_set}}</th>
-				<th>{{stringtablerow.lang_code}}</th>
 				<th>{{stringtablerow.string_key}}</th>
 				<th>{{stringtablerow.string_content}}</th>
 			</tr>
 			{% endfor %}
+			-->
+			<!-- {{f.as_table}} -->
+			{{formset}}
 		</table>
 	</body>
 </html>

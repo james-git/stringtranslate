@@ -2,6 +2,9 @@
 from django.shortcuts import render_to_response
 
 from .models import AppSet, LangCode, StringKey, StringTable
+# from .forms import StringTableForm
+from .models import AppSetForm, LangCodeForm, StringKeyForm, StringTableForm
+from django.forms import modelformset_factory
 
 
 def post_list(request):
@@ -15,8 +18,12 @@ def view_string_table(request):
 		
 		appset = AppSet.objects.get(id=appset_id)
 		langcode = LangCode.objects.get(id=langcode_id)
-		
 		stringtable = StringTable.objects.filter(app_set=appset, lang_code=langcode)
+			
+		# f = StringTableForm()
+		
+		StringTableFormSet = modelformset_factory(StringTable, form=StringTableForm)
+		formset = StringTableFormSet(queryset=stringtable)
 		
 		return render_to_response('stringtranslate/view_string_table01.html', locals())
 	else:

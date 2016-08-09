@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm, Textarea
 from django.utils import timezone
 
 
@@ -41,3 +42,31 @@ class StringTable(models.Model):
 	def __str__(self):
 		return self.string_content
 		
+		
+class AppSetForm(ModelForm):
+	class Meta:
+		model = AppSet
+		fields = '__all__'
+		
+		
+class LangCodeForm(ModelForm):
+	class Meta:
+		model = LangCode
+		fields = '__all__'
+		
+		
+class StringKeyForm(ModelForm):
+	class Meta:
+		model = StringKey
+		fields = '__all__'
+	
+	
+class StringTableForm(ModelForm):
+	class Meta:
+		model = StringTable
+		# fields = '__all__'
+		exclude = ['app_set', 'lang_code', 'created_date', 'modified_date']
+		widgets = {
+			'string_key': Textarea(attrs={'cols': 50, 'rows': 1}),
+			'string_content': Textarea(attrs={'cols': 80, 'rows': 5}),
+		}
