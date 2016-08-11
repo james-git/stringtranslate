@@ -67,6 +67,6 @@ class StringTableForm(ModelForm):
 		# fields = '__all__'
 		exclude = ['app_set', 'lang_code', 'created_date', 'modified_date']
 		widgets = {
-			'string_key': Textarea(attrs={'cols': 50, 'rows': 1}),
+			# 'string_key': Textarea(attrs={'cols': 50, 'rows': 1}),
 			'string_content': Textarea(attrs={'cols': 80, 'rows': 5}),
 		}
